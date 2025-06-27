@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Indie Flower', cursive;
+  background-image: url("../img/bg.png");
+  background-repeat: repeat;
+  background-size: cover;
+  animation: scrollBg 60s linear infinite;
+}
+
+@keyframes scrollBg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000px; /* scrolls vertically */
+  }
+}
+
+
+#card-front {
+  color: #FFDFDF;
+  z-index: 10;
+}
+
+#card, #card-front, #card-inside {
+  height: 580px;
+}
+
+.wrap {
+  padding: 1.5em 2.5em;
+  height: 100%;
+}
+
+#card-front, #card-inside {
+  width: 50%;
+  -webkit-box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 50%;
+}
+
+#card-inside .wrap {
+  background: #FFEFEF;
+  -webkit-box-shadow: inset 2px 0 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 2px 0 1px rgba(0, 0, 0, 0.05);
+}
+
+#card {
+  width: 960px;
+  margin: auto;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 5000px;
+          perspective: 5000px;
+  -webkit-transform: translateX(-25%);
+          transform: translateX(-25%);
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  transition: -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#card h1 {
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-style: italic;
+  font-size: 70px;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15), 1px 1px 0 #ffc8c8, 2px 2px 0 #ff9696, 3px 3px 0 #ff7d7d;
+  color: #FFF;
+}
+
+#card-inside {
+  line-height: 1.4;
+  font-family: 'Indie Flower';
+  color: #331717;
+  font-style: italic;
+}
+
+p {
+  font-size: 1.15em;
+  margin-top: 1em;
+}
+
+p:first-child {
+  
+  margin-top: 0;
+}
+
+p.signed {
+  margin-top: 1.5em;
+  text-align: center;
+font-family: 'Indie Flower', cursive;
+  font-size: 1.5em;
+}
+
+#card-front {
+  background-color: #ee9ca7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5555), to(#FF7777));
+  background-image: linear-gradient(top, #FF5555 0%, #FF7777 100%);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: -webkit-transform 1s linear;
+  transition: -webkit-transform 1s linear;
+  transition: transform 1s linear;
+  transition: transform 1s linear, -webkit-transform 1s linear;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 5000px;
+          perspective: 5000px;
+}
+
+#card-front:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  background-color: #444;
+  -webkit-transform: translateZ(-1px);
+          transform: translateZ(-1px);
+}
+
+#card-front .wrap {
+  -webkit-transition: background 1s linear;
+  transition: background 1s linear;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+#card-front button {
+  position: absolute;
+  bottom: 1em;
+  right: -12px;
+  background: #F44;
+  color: #FFF;
+  font-family: 'Indie Flower', cursive;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: .5em;
+  border: none;
+  cursor: pointer;
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+#card-front button:hover,
+#card-front button:focus {
+  background: #F22;
+}
+
+#close {
+  display: none;
+}
+
+#card.open-fully {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+#card.open-fully #close,
+#card-open-half #close {
+  display: inline;
+}
+
+#card.open-fully #open {
+  display: none;
+}
+
+#card.open-half #card-front,
+#card.close-half #card-front {
+  -webkit-transform: rotateY(-90deg);
+          transform: rotateY(-90deg);
+}
+
+#card.open-half .shadow {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#card.open-fully #card-front,
+#card.close-half #card-front {
+  background: #FFEFEF;
+}
+
+#card.open-fully #card-front {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+#card.open-fully .shadow {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+footer {
+  max-width: 500px;
+  margin: 40px auto;
+font-family: 'Indie Flower', cursive;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #888;
+  text-align: center;
+}
+
+.text {
+  color: #8b6a60;
+  font-family: 'Indie Flower', cursive;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+}
+.text h1 {
+  font-size: 1.4em;
+}
+
+.card-front_inside {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  width: 80%;
+  margin: auto;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: translateZ(-1px) rotateY(180deg);
+          transform: translateZ(-1px) rotateY(180deg);
+  background-color: #ffefef;
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: translateZ(-2px) rotateY(180deg);
+          transform: translateZ(-2px) rotateY(180deg);
+  pointer-events: none;
+  -webkit-transition: background 1s linear;
+  transition: background 1s linear;
+}
+
+.polaroid {
+  width: 240x;
+  height: 400px;
+  position: absolute;
+  float: left;
+  background: #1e1c18;
+  border: 7px solid #f5f5f5;
+  border-bottom: 50px solid #f5f5f5;
+  -webkit-box-shadow: 0 0 6px -1px #000;
+          box-shadow: 0 0 6px -1px #000;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg);
+  clear: both;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.polaroid img,
+.polaroid .img {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background-position: center;
+  background-size: cover;
+  -webkit-animation: fade-in 20s ease-in;
+          animation: fade-in 20s ease-in;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*toggle button*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+    margin: 0; /* Remove default margin */
+}
+
+.container {
+    flex: 1; /* Allow the container to grow and take available space */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+#toggle-card {
+    margin: 20px auto; /* Center the button horizontally and add space above and below */
+    background-color: #FF6F61; /* Button background color */
+    color: white; /* Text color */
+    font-family: 'Indie Flower', cursive; /* Font style */
+    font-size: 1.2em; /* Font size */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    max-width: 200px; /* Set a maximum width for the button */
+    width: auto; /* Set width to auto to prevent stretching */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+#toggle-card:hover {
+    background-color: #FF4C3B; /* Darker shade on hover */
+}
+
+#toggle-card:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: 0 0 5px rgba(255, 100, 100, 0.5); /* Add a shadow effect on focus */
+}
+
+/* download button */
+#download-button {
+    display: none; /* Initially hidden */
+    margin: 20px auto; /* Center the button horizontally and add space above and below */
+    background-color: #FF6F61; /* Button background color */
+    color: white; /* Text color */
+    font-family: 'Indie Flower', cursive; /* Font style */
+    font-size: 1.0em; /* Font size */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    max-width: 200px; /* Set a maximum width for the button */
+    width: auto; /* Set width to auto to prevent stretching */
+    box-sizing: border-box; /* Include padding in width calculation */
+    text-decoration: none;
+}
+
+#download-button:hover {
+  background-color: #FF4C3B; /* Darker shade on hover */
+}
+
+/* star symbol */
+.star-symbol {
+  font-size: 10em; /* Adjust the size of the star */
+  color: #ffffff; /* Change the color of the star */
+  margin-top: 10px; /* Space between the text and the star */
+}
