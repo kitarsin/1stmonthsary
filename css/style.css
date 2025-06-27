@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -10,6 +11,13 @@ body {
   background-repeat: repeat;
   background-size: cover;
   animation: scrollBg 60s linear infinite;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes scrollBg {
@@ -17,10 +25,20 @@ body {
     background-position: 0 0;
   }
   100% {
-    background-position: 0 1000px; /* scrolls vertically */
+    background-position: 0 1000px;
   }
 }
 
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #card-front {
   color: #FFDFDF;
@@ -28,12 +46,16 @@ body {
 }
 
 #card, #card-front, #card-inside {
-  height: 580px;
+  height: 70vh;
+  min-height: 400px;
+  max-height: 580px;
 }
 
 .wrap {
-  padding: 1.5em 2.5em;
+  padding: 1.5em 2em;
   height: 100%;
+  overflow-y: auto;
+  overflow: hidden;
 }
 
 #card-front, #card-inside {
@@ -51,7 +73,8 @@ body {
 }
 
 #card {
-  width: 960px;
+  width: 100%;
+  max-width: 960px;
   margin: auto;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -63,20 +86,18 @@ body {
   transition: -webkit-transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  position: relative;
 }
 
 #card h1 {
   text-align: center;
   font-family: 'Indie Flower', cursive;
   font-style: italic;
-  font-size: 70px;
+  font-size: clamp(2rem, 8vw, 4rem);
   text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15), 1px 1px 0 #ffc8c8, 2px 2px 0 #ff9696, 3px 3px 0 #ff7d7d;
   color: #FFF;
+  line-height: 1.2;
+  margin: 0.5em 0;
 }
 
 #card-inside {
@@ -87,20 +108,23 @@ body {
 }
 
 p {
-  font-size: 1.15em;
+  font-size: clamp(1rem, 3vw, 1.15em);
   margin-top: 1em;
+  text-align: justify;
 }
 
 p:first-child {
-  
   margin-top: 0;
+  text-align: center;
+  font-size: clamp(1.1rem, 3.5vw, 1.3em);
+  font-weight: bold;
 }
 
 p.signed {
   margin-top: 1.5em;
   text-align: center;
-font-family: 'Indie Flower', cursive;
-  font-size: 1.5em;
+  font-family: 'Indie Flower', cursive;
+  font-size: clamp(1.2rem, 4vw, 1.5em);
 }
 
 #card-front {
@@ -148,17 +172,22 @@ font-family: 'Indie Flower', cursive;
   font-family: 'Indie Flower', cursive;
   font-style: italic;
   font-weight: bold;
-  font-size: 1.5em;
-  padding: .5em;
+  font-size: clamp(1.2rem, 4vw, 1.5em);
+  padding: 0.8em 1em;
   border: none;
   cursor: pointer;
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.4);
           box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
 }
 
 #card-front button:hover,
 #card-front button:focus {
   background: #F22;
+  transform: scale(1.05);
 }
 
 #close {
@@ -203,27 +232,6 @@ font-family: 'Indie Flower', cursive;
   background-color: rgba(0, 0, 0, 0);
 }
 
-footer {
-  max-width: 500px;
-  margin: 40px auto;
-font-family: 'Indie Flower', cursive;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #888;
-  text-align: center;
-}
-
-.text {
-  color: #8b6a60;
-  font-family: 'Indie Flower', cursive;
-  font-weight: 300;
-  font-style: italic;
-  text-align: center;
-}
-.text h1 {
-  font-size: 1.4em;
-}
-
 .card-front_inside {
   position: absolute;
   top: 0;
@@ -256,13 +264,12 @@ font-family: 'Indie Flower', cursive;
 }
 
 .polaroid {
-  width: 240x;
-  height: 400px;
+  width: min(240px, 80%);
+  height: min(300px, 60%);
   position: absolute;
-  float: left;
   background: #1e1c18;
   border: 7px solid #f5f5f5;
-  border-bottom: 50px solid #f5f5f5;
+  border-bottom: 30px solid #f5f5f5;
   -webkit-box-shadow: 0 0 6px -1px #000;
           box-shadow: 0 0 6px -1px #000;
   overflow: hidden;
@@ -271,10 +278,10 @@ font-family: 'Indie Flower', cursive;
   margin: auto;
   -webkit-transform: rotate(-5deg);
           transform: rotate(-5deg);
-  clear: both;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
+
 .polaroid img,
 .polaroid .img {
   width: 100%;
@@ -307,73 +314,124 @@ font-family: 'Indie Flower', cursive;
   }
 }
 
-/*toggle button*/
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
-    margin: 0; /* Remove default margin */
+/* Button styles */
+#toggle-card, #download-button {
+  margin: 20px auto;
+  background-color: #FF6F61;
+  color: white;
+  font-family: 'Indie Flower', cursive;
+  font-size: clamp(1rem, 3vw, 1.2em);
+  padding: 15px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 250px;
+  width: auto;
+  min-height: 44px;
+  touch-action: manipulation;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.container {
-    flex: 1; /* Allow the container to grow and take available space */
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+#toggle-card:hover, #download-button:hover {
+  background-color: #FF4C3B;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 100, 100, 0.3);
 }
 
-#toggle-card {
-    margin: 20px auto; /* Center the button horizontally and add space above and below */
-    background-color: #FF6F61; /* Button background color */
-    color: white; /* Text color */
-    font-family: 'Indie Flower', cursive; /* Font style */
-    font-size: 1.2em; /* Font size */
-    padding: 10px 20px; /* Padding around the text */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    max-width: 200px; /* Set a maximum width for the button */
-    width: auto; /* Set width to auto to prevent stretching */
-    box-sizing: border-box; /* Include padding in width calculation */
+#toggle-card:focus, #download-button:focus {
+  outline: 2px solid #FF6F61;
+  outline-offset: 2px;
 }
 
-#toggle-card:hover {
-    background-color: #FF4C3B; /* Darker shade on hover */
-}
-
-#toggle-card:focus {
-    outline: none; /* Remove outline on focus */
-    box-shadow: 0 0 5px rgba(255, 100, 100, 0.5); /* Add a shadow effect on focus */
-}
-
-/* download button */
 #download-button {
-    display: none; /* Initially hidden */
-    margin: 20px auto; /* Center the button horizontally and add space above and below */
-    background-color: #FF6F61; /* Button background color */
-    color: white; /* Text color */
-    font-family: 'Indie Flower', cursive; /* Font style */
-    font-size: 1.0em; /* Font size */
-    padding: 10px 20px; /* Padding around the text */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    max-width: 200px; /* Set a maximum width for the button */
-    width: auto; /* Set width to auto to prevent stretching */
-    box-sizing: border-box; /* Include padding in width calculation */
-    text-decoration: none;
+  display: none;
 }
 
-#download-button:hover {
-  background-color: #FF4C3B; /* Darker shade on hover */
-}
-
-/* star symbol */
+/* Star symbol */
 .star-symbol {
-  font-size: 10em; /* Adjust the size of the star */
-  color: #ffffff; /* Change the color of the star */
-  margin-top: 10px; /* Space between the text and the star */
+  font-size: clamp(4rem, 15vw, 10em);
+  color: #ffffff;
+  margin-top: 10px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  #card {
+    -webkit-transform: translateX(-20%);
+    transform: translateX(-20%);
+  }
+  
+  .wrap {
+    padding: 1em 1.5em;
+  }
+  
+  #card, #card-front, #card-inside {
+    height: 60vh;
+    min-height: 350px;
+  }
+  
+  .polaroid {
+    width: min(200px, 90%);
+    height: min(250px, 50%);
+    border-bottom: 20px solid #f5f5f5;
+  }
+}
+
+@media (max-width: 480px) {
+  #card {
+    -webkit-transform: translateX(-15%);
+    transform: translateX(-15%);
+  }
+  
+  #card, #card-front, #card-inside {
+    height: 55vh;
+    min-height: 300px;
+  }
+  
+  .wrap {
+    padding: 0.8em 1.2em;
+  }
+  
+  .polaroid {
+    width: min(160px, 85%);
+    height: min(200px, 45%);
+  }
+  
+  #card-front button {
+    right: -8px;
+    padding: 0.6em 0.8em;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  #card, #card-front, #card-inside {
+    height: 80vh;
+    min-height: 250px;
+  }
+  
+  body {
+    padding: 5px;
+  }
 }
