@@ -55,7 +55,6 @@ body {
   padding: 1.5em 2em;
   height: 100%;
   overflow-y: auto;
-  overflow: hidden;
 }
 
 #card-front, #card-inside {
