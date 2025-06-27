@@ -49,5 +49,5 @@
       toggleBtn.textContent = 'show card';
       downloadBtn.style.display = 'inline-block';
     }
-  };
+  });
 }());
